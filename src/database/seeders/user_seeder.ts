@@ -7,8 +7,8 @@ class UserSeeder implements Seeder {
         const userRepository = datasource.getRepository(User);
 
         const userAdmin = userRepository.create({
-            email: 'admin@test.aaa',
-            password: 'admin',
+            email: 'user@test.aaa',
+            password: 'user',
             is_active: true,
         });
 

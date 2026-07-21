@@ -19,7 +19,7 @@ class UserRepository implements IUserRepository {
                 email: email,
                 password: password
             },
-            select: ['id', 'email', 'password', 'updated_at', 'created_at']
+            select: ['id', 'email', 'password', 'updated_on']
         })
         
         return user;

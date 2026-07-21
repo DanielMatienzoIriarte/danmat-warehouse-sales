@@ -13,7 +13,7 @@ abstract class BasicEntity extends BaseEntity {
    created_at: Date;
 
    @UpdateDateColumn()
-   updated_at: Date;
+   updated_on: Date;
 }
 
 export default BasicEntity;

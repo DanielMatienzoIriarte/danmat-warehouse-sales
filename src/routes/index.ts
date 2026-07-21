@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import salesRouter from "./sales_routes";
+import apiRouter from "./api";
 
 const router = express.Router();
 
@@ -12,5 +13,6 @@ router.get('/', (request: Request, response: Response) => {
 });
 
 router.use('/sales', salesRouter)
+router.use('/api', apiRouter)
 
 export default router;

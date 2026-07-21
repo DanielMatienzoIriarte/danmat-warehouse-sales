@@ -1,17 +1,19 @@
-import { Response } from "express";
+import { CookieOptions, Response } from "express";
 import { IUser } from "../interfaces/interfaces";
 import IJWTService from "../interfaces/jwt_service_interface";
 import JWTService from "./jwt_service";
 import IAuthenticationService from '../interfaces/authorization_interface';
 
-const COOKIE_EXPIRATION_DAYS = 3;
+const COOKIE_EXPIRATION_DAYS = 1;
 const expirationDate = new Date(
     Date.now() + COOKIE_EXPIRATION_DAYS * 24 * 60 * 60 * 1000
 );
-const cookieOptions = {
+const cookieOptions: CookieOptions = {
     expires: expirationDate,
-    secure: false,
+    secure: true,
     httpOnly: true,
+    sameSite: 'none',
+    path: '/',
 };
 
 class AuthenticationService implements IAuthenticationService{
@@ -26,7 +28,7 @@ class AuthenticationService implements IAuthenticationService{
     public createCookie(user: IUser, response: Response): void {
         const token = this.jwtService.createToken(user);
 
-        response.cookie('jwt', token, cookieOptions);
+        response.cookie('DANMAT-COKKIE', token, cookieOptions);
     }
 }
 
